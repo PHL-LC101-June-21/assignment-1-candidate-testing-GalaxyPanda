@@ -1,3 +1,4 @@
+
 const input = require('readline-sync');
 
 // TODO 2: modify your quiz app to ask 5 questions //
@@ -8,8 +9,8 @@ let candidateName;
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer;
-let questions;
-let correctAnswers;
+let questions = ["Who was the first American woman in space? ", "True or false: 5 kilometer == 5000 meters? ","(5 + 3)/2 * 10 = ? ", "Given the array[8, Orbit, Trajectory, 45] what entry is at index 2? ", "What is the minimum crew size for the ISS? "];
+let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers;
 
 
@@ -20,18 +21,27 @@ function askForName() {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-candidateAnswer = input.question(question);
-
-}
+  let i = 0;
+  while(questions[i]){
+   candidateAnswers = input.question(questions[i]);
+   i++
+  }
+  }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (correctAnswer === candidateAnswer){
-  console.log("You are correct!");
-} else{
-  console.log("You are not correct!");
-}
+askQuestion(); 
+ let i = 0;
+
+ while(correctAnswers[i]){
+ if(candidateAnswers === correctAnswers[i]){
+   console.log(`You are correct`);
+ } else {
+   console.log(`You are incorrect ${candidateName}`);
+ }
+i++
+ }
 
   let grade;
   
